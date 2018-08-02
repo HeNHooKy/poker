@@ -1,4 +1,4 @@
-# Poker Texas Hold’em
+# Texas Hold’em poker 
 I create server and client for playing poker. And it's works!
 # How to start?
  You need install on you'r PC node.js (min: 8.11.3 LTS).
