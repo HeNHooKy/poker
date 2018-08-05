@@ -1,9 +1,9 @@
 # Texas Hold’em poker 
 I create server and client for playing poker. And it's works!
 # How to start?
- You need install on you'r PC node.js (min: 8.11.3 LTS).
- You need to start server. In cmd writte (node <path>\server.js )
- Install on your server pc mysql and create table: 
+ You need install node.js on you'r PC (min: 8.11.3 LTS).
+ You need to start server.Writte in cmd (node <path>\server.js )
+ Install mysql on your server pc and create table: 
  ##example: "create table clients (`id` int(11) not null auto_increment, `name` char(128) CHARACTER SET utf8 COLLATE utf8_bin, `password` char(128) not null, `money` int(32), primary key (`id`));"
  Now in server.js set your db_name, db_password and db_ip. Congratulations, you start poker-server.
 # Connect
