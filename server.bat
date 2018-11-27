@@ -1,1 +1,1 @@
-node C:\Users\henho\Desktop\poker\server.js
+node server.js
