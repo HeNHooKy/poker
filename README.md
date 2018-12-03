@@ -13,3 +13,5 @@ I create server and client for playing poker. And it's works!
  Server written for native of Russian on Russian language.
 # Help
  To start play you need write in console ".help" and you get all commands available on server.
+
+Full Russian version readme: https://freelansim.ru/projects/132851
