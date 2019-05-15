@@ -24,6 +24,7 @@ var _Client = function(name, password) {
 	this.card2;
 	this.onServer = true;
 	this.allIn = false;
+	this.lastMessegeTime = new Date(milliseconds);
 }
 
 const winSet = ['Старшая карта', 'Пара', 'Две пары', 'Сет', 'Стрит', 'Флеш', 'Фулл хаус', 'Каре', 'Стрит флеш', 'Роял флеш'];
@@ -162,7 +163,15 @@ const server = net.createServer((cc)=> {
 
 
 			} else {
-				sendMessageToAllClients({message: data.toString().replace(/\r?\n/g, '')}, client.room);
+				var timeNow = new Date(milliseconds);
+				if(timeNow - client.lastMessegeTime >= 30){
+					sendMessageToAllClients({message: data.toString().replace(/\r?\n/g, '')}, client.room);
+					client.lastMessegeTime = timeNow;
+				}
+				else {
+					cc.write({message: 'Писать в чат можно только раз в 30 секунд!'});
+				}
+				
 			}
 		}
 	});
@@ -667,6 +676,7 @@ const server = net.createServer((cc)=> {
 						});
 
 						cc.write(JSON.stringify({message: 'Регистрация прошла успешно', yourName: client.name, money: client.money, room: null, name: client.name}));
+						cc.write(JSON.stringify({message: "Узнай как начать играть, пиши: .help!", yourName: client.name, money: client.money, room: null, name: client.name}));
 						serverSendMessage({message: client.name + " подключился к серверу"}, null);
 						serverSendMessage({clientsOnRoom: clientsOnNullRoom}, null);
 						console.log('Registered new user: ' + name);
